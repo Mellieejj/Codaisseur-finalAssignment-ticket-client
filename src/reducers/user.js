@@ -1,4 +1,4 @@
-import { JWT } from "../actions";
+import { JWT } from "../actions/userActions";
 
 const initialState = {};
 export default function(state = initialState, action) {

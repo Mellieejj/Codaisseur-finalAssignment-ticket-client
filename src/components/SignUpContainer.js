@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
-import { createUser } from "../actions";
+import { createUser } from "../actions/userActions";
 
 class SignupFormContainer extends Component {
   state = {
     name: "",
-    password: ""
+    password: "",
+    message: ""
   };
 
   onSubmit = event => {
@@ -14,7 +15,8 @@ class SignupFormContainer extends Component {
     this.props.createUser(this.state);
     this.setState({
       name: "",
-      password: ""
+      password: "",
+      message: "Yeah, you can login with you new created account :-)"
     });
   };
 
@@ -34,6 +36,7 @@ class SignupFormContainer extends Component {
           values={this.state}
           buttonName="Sign Up"
         />
+        {this.state.message}
       </div>
     );
   }

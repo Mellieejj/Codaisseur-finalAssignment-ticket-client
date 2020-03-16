@@ -38,7 +38,7 @@ const signup = payload => {
 export function createUser(data) {
   return async function(dispatch) {
     try {
-      const response = await request.post(`${baseUrl}/user`).send(data);
+      const response = await request.post(`${baseUrl}/users`).send(data);
       const action = signup(response.body);
       await dispatch(action);
     } catch (error) {

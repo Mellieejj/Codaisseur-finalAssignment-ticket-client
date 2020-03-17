@@ -1,13 +1,18 @@
 import React from "react";
-import LoginFormContainer from "./components/LoginFormContainer";
+import {Route } from "react-router-dom"
+
+import Home from "./components/Home"
+
 import "./App.css";
-import SignUpContainer from "./components/SignUpContainer";
+
+
 
 function App() {
   return (
     <div className="App">
-      <LoginFormContainer />
-      <SignUpContainer />
+      <Route exact path="/" component={Home} />
+      {/* <Route exact path="/events/:id" component={EventDetailsContainer}/> */}
+    
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class LoginForm extends Component {
+export default class LoginForm extends Component {
   render() {
     return (
       <div>
@@ -26,4 +26,3 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;

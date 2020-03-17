@@ -1,13 +1,10 @@
-import { ALL_EVENTS, NEW_EVENT } from "../actions/eventActions";
+import { NEW_TICKET } from "../actions/ticketActions";
 
 const initialState = [];
 
 export default function(state = initialState, action = {}) {
   switch (action.type) {
-    case ALL_EVENTS: {
-      return action.payload;
-    }
-    case NEW_EVENT: {
+      case NEW_TICKET: {
       return [...state, action.payload];
     }
 

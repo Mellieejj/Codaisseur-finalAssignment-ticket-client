@@ -25,10 +25,11 @@ class EventListContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("mstp", state);
+  console.log("mstp", state.event);
   return {
     events: state.events,
-    user: state.user
+    user: state.user,
+    event: state.event
   };
 }
 

@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 export default class EventList extends Component {
   render() {
     const today = new Date();
-    // console.log("CurrentDate", today);
+
     const currentList = this.props.events.filter(event => {
-      // console.log(moment(event.startingDate).format("ll"))
-      // console.log(moment(today).format("ll"))
-      return moment(event.startingDate).format("ll") >= moment(today).format("ll");
+      const startDate = new Date(event.startingDate);
+      return startDate >= today;
+      // return moment(event.startingDate).format("ll") >= moment(today).format("ll");
     });
-    // console.log("currentList", currentList);
 
     const list = currentList.map(event => {
       return (

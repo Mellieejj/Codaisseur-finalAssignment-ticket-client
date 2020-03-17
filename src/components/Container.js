@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import AuthContainer from "./AuthContainer"
 import EventListContainer from "./EventListContainer"
 
-export default class Home extends Component {
+class Container extends Component {
   render(){
     return(
     <div>
@@ -12,3 +12,5 @@ export default class Home extends Component {
     )
   }
 }
+
+export default Container

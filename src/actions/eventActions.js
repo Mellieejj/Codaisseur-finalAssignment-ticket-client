@@ -49,3 +49,25 @@ export const createEvent = data => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+export const EVENT_FETCHED = "EVENT_FETCHED";
+
+const eventFetched = event => {
+  // console.log("logging user", user);
+  return {
+    type: EVENT_FETCHED,
+    payload: event
+  };
+};
+
+export const loadEvent = id => dispatch => {
+  request
+    .get(`${baseUrl}/events/${id}`)
+    .send(id)
+    .then(response => {
+      // console.log("loadUser", response.body);
+
+      dispatch(eventFetched(response.body));
+    })
+    .catch(console.error);
+};

@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 
 import LoginFormContainer from "./LoginFormContainer";
 import SignUpContainer from "./SignUpContainer";
+import "./style/AuthContainer.css" 
 
 class AuthContainer extends Component {
   render() {
     if (!this.props.user) {
       return (
-        <div>
+        <div className="auth">
           <LoginFormContainer />
           <SignUpContainer />
         </div>

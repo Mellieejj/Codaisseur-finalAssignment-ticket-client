@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+}
+.auth {
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid #61b3de;
+  border-radius: 25px;
+  margin: 25px;
+  background-color: #ffffff
+}
+

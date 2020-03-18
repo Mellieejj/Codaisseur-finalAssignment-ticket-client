@@ -60,10 +60,12 @@ const eventFetched = event => {
   };
 };
 
-export const loadEvent = id => dispatch => {
+export const loadEvent = eventId => dispatch => {
+  console.log(eventId);
+  
   request
-    .get(`${baseUrl}/events/${id}`)
-    .send(id)
+    .get(`${baseUrl}/events/${eventId}`)
+    .send(eventId)
     .then(response => {
       // console.log("loadUser", response.body);
 

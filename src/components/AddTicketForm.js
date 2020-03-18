@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import "./style/AddTicketForm.css";
 
 export default class AddTicketForm extends Component {
   render() {
     console.log("user test", this.props.user);
     console.log("event test", this.props.event.id);
     return (
-      <div>
+      <div className="addTicket">
         <form onSubmit={this.props.onSubmit}>
           <h3>Add a Ticket</h3>
           <input

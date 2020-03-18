@@ -25,3 +25,26 @@ export const createTicket = data => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+export const TICKET_FETCHED = "TICKET_FETCHED";
+
+const ticketFetched = ticket => {
+  console.log("logging ticket", ticket);
+  return {
+    type: TICKET_FETCHED,
+    payload: ticket
+  };
+};
+
+export const loadTicket = ticketId => dispatch => {
+
+  request
+    .get(`${baseUrl}/tickets/${ticketId}`)
+    .send(ticketId)
+    .then(response => {
+      console.log("loadTicket", response.body);
+
+      dispatch(ticketFetched(response.body));
+    })
+    .catch(console.error);
+};

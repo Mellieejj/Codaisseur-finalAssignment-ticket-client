@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
 import AddTicketFormContainer from "./AddTicketFormContainer";
+import "./style/EventDetails.css";
 
 export default class EventDetails extends Component {
   state = {
@@ -20,8 +22,8 @@ export default class EventDetails extends Component {
   };
 
   render() {
-    console.log("user eventDetails", this.props.user);
-    
+    // console.log("user eventDetails", this.props.user);
+
     if (this.props.event) {
       if (this.props.event.tickets) {
         const tickets = this.props.event.tickets.map(ticket => {
@@ -29,15 +31,17 @@ export default class EventDetails extends Component {
             <img src={ticket.pictureUrl} alt="" />
           ) : null;
           return (
-            <li key={ticket.id}>
-              {image}
-              <p>€{ticket.price.toFixed(2)}</p>
-              <p>{ticket.description}</p>
-            </li>
+            <Link key={ticket.id} to={`/events/${this.props.event.id}/${ticket.id}`}>
+              <li key={ticket.id}>
+                {image}
+                <p>€{ticket.price.toFixed(2)}</p>
+                <p>{ticket.description}</p>
+              </li>
+            </Link>
           );
         });
         return (
-          <div>
+          <div className="eventDetails">
             <h2>{this.props.event.name}</h2>
             <p>
               Date: {moment(this.props.event.startingDate).format("LL")}{" "}
@@ -46,14 +50,13 @@ export default class EventDetails extends Component {
                 : null}
             </p>
             <p>{this.props.event.description}</p>
-            
-              {!this.props.user ? 
-                 null : (
-                 <button onClick={() => this.onClick()}>Add Ticket</button>
-                 )}
-               {this.state.add ? <AddTicketFormContainer /> : null }
-            
-            <ul>{tickets}</ul>
+            {!this.props.user ? null : (
+              <button onClick={() => this.onClick()}>Add Ticket</button>
+            )}
+            {this.state.add ? <AddTicketFormContainer /> : null}
+            <div className="tickets">
+              <ul>{tickets}</ul>
+            </div>{" "}
           </div>
         );
       } else {

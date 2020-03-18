@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import "./style/EventList.css"
 
 export default class EventList extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class EventList extends Component {
 
     const list = currentList.map(event => {
       return (
-        <div key={event.id}>
+        <div className="eventList" key={event.id}>
           <Link to={`/events/${event.id}`}>
             <img src={event.pictureUrl} alt="" />
             <h3>{event.name}</h3>

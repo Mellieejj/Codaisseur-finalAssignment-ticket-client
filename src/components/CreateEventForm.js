@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./style/CreateEventForm.css"
 
 export default class CreateEventFrom extends Component {
   render() {
     return (
-      <div>
+      <div className="addEvent">
         <h3>Add a Event</h3>
         <form onSubmit={this.props.onSubmit}>
           <input

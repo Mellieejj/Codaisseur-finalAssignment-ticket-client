@@ -1,0 +1,9 @@
+.eventList {
+  max-width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 25px;
+  border-radius: 25px;
+  border: 2px solid #61b3de;
+  background-color: #ffffff;
+}

@@ -1,0 +1,24 @@
+.eventDetails {
+  border: 2px solid #61b3de;
+  border-radius: 25px;
+  background-color: #ffffff;
+  max-width: 75%;
+  margin: auto;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  border: 1px solid #ee6123;
+  border-radius: 25px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  max-width: 75%;
+  background-color: #ffffff;
+}
+
+li>p{
+  margin: auto;
+}

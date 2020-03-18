@@ -20,7 +20,43 @@ export default class EventDetails extends Component {
       });
     }
   };
+  risk = () => {
+    //more than 3 comment + 5% risk
+    const commentlength = this.props.ticket.comments
+      ? this.props.ticket.comments.length
+      : false;
+    const commentRisk = commentlength > 3 ? 5 : 0;
 
+    //user only 1 ticket + 10% risk
+    const userArray = this.props.tickets
+      ? this.props.tickets.filter(
+          ticket => ticket.userId === this.props.ticket.userId
+        )
+      : null;
+    const userRisk = userArray.length === 1 ? 10 : 0;
+
+    //time of adding ticket 9-17u -10% 17-9u +10%
+    const time = this.props.ticket.createdAt
+      ? new Date(this.props.ticket.createdAt)
+      : null;
+    const hours = moment(time).format("Hmm");
+    const timeRisk = hours > 900 && hours < 1700 ? -10 : 10;
+
+    //total risk
+    const totalRisk = commentRisk + userRisk + timeRisk + 5;
+    const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
+
+    let color = "black";
+    if (risk < 30) {
+      color = "#97BA28";
+    } else if (risk > 30 || risk < 55) {
+      color = "#FFE400";
+    } else {
+      color = "#FF3232";
+    }
+
+    return <p style={{ color: color }}>Fraud risk: {risk}%</p>;
+  };
   render() {
     if (this.props.event) {
       if (this.props.event.tickets) {

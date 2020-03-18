@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 import "./style/TicketDetails.css";
 import UpdateTicketFormContainer from "./UpdateTicketFormContainer";
 
@@ -35,10 +36,27 @@ export default class TicketDetails extends Component {
       : null;
     const userRisk = userArray.length === 1 ? 10 : 0;
 
-    console.log("ticket post time", this.props.ticket.createdAt)
+    //time of adding ticket 9-17u -10% 17-9u +10%
+    const time = this.props.ticket.createdAt
+      ? new Date(this.props.ticket.createdAt)
+      : null;
+    const hours = moment(time).format("Hmm");
+    const timeRisk = hours > 900 && hours < 1700 ? -10 : 10;
+
     //total risk
-    const risk = commentRisk + userRisk + 5;
-    return risk;
+    const totalRisk = commentRisk + userRisk + timeRisk + 5;
+    const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
+
+    let color = "black";
+    if (risk < 30) {
+      color = "#97BA28";
+    } else if (risk > 30 || risk < 55) {
+      color = "#FFE400";
+    } else {
+      color = "#FF3232";
+    }
+
+    return <p style={{ color: color }}>Fraud risk: {risk}%</p>;
   };
 
   render() {
@@ -57,7 +75,7 @@ export default class TicketDetails extends Component {
           {this.props.ticket.pictureUrl ? (
             <img src={this.props.ticket.pictureUrl} alt="" />
           ) : null}
-          <p>Fraud risk: {this.risk()}%</p>
+          {this.risk()}
           <p>
             Price: €{" "}
             {this.props.ticket.price

@@ -5,7 +5,8 @@ import AddCommentForm from "./AddCommentForm";
 
 class AddCommentsFormContainer extends Component {
   state = {
-    text: ""
+    text: "",
+    ticketId: ""
   };
 
   onChange = event => {
@@ -17,15 +18,16 @@ class AddCommentsFormContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault();
+    console.log("onSubmit",this.state);
+
     this.props.createComment(this.state);
     this.setState({
-      text: ""
+      text: "",
+      ticketId: ""
     });
   };
 
   render() {
-    console.log(this.props.user);
-
     return (
       <div>
         <AddCommentForm
@@ -33,6 +35,7 @@ class AddCommentsFormContainer extends Component {
           onSubmit={this.onSubmit}
           values={this.state}
           user={this.props.user}
+          ticket={this.props.ticket}
         />
       </div>
     );
@@ -40,7 +43,7 @@ class AddCommentsFormContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state ticket", state.event);
+  console.log("state ticket", state.ticket);
   return {
     user: state.user.jwt,
     event: state.event,

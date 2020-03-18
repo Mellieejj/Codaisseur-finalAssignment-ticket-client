@@ -22,8 +22,6 @@ export default class EventDetails extends Component {
   };
 
   render() {
-    // console.log("user eventDetails", this.props.user);
-
     if (this.props.event) {
       if (this.props.event.tickets) {
         const tickets = this.props.event.tickets.map(ticket => {
@@ -31,7 +29,10 @@ export default class EventDetails extends Component {
             <img src={ticket.pictureUrl} alt="" />
           ) : null;
           return (
-            <Link key={ticket.id} to={`/events/${this.props.event.id}/${ticket.id}`}>
+            <Link
+              key={ticket.id}
+              to={`/events/${this.props.event.id}/${ticket.id}`}
+            >
               <li key={ticket.id}>
                 {image}
                 <p>€{ticket.price.toFixed(2)}</p>
@@ -42,6 +43,12 @@ export default class EventDetails extends Component {
         });
         return (
           <div className="eventDetails">
+            <div>
+              <p>{this.props.user ? null : <Link to={"/"}>Login </Link>}</p>{" "}
+              <p>
+                <Link to={"/"}>Back to all Events</Link>
+              </p>
+            </div>
             <h2>{this.props.event.name}</h2>
             <p>
               Date: {moment(this.props.event.startingDate).format("LL")}{" "}
@@ -56,7 +63,7 @@ export default class EventDetails extends Component {
             {this.state.add ? <AddTicketFormContainer /> : null}
             <div className="tickets">
               <ul>{tickets}</ul>
-            </div>{" "}
+            </div>
           </div>
         );
       } else {

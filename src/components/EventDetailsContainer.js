@@ -5,7 +5,7 @@ import EventDetails from "./EventDetails";
 
 class EventDetailsContainer extends Component {
   componentDidMount() {
-    console.log("params", this.props.match.params.eventId);
+    // console.log("params", this.props.match.params.eventId);
     this.props.loadEvent(this.props.match.params.eventId);
   }
 
@@ -19,7 +19,7 @@ class EventDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state event", state.event);
+  // console.log("state event", state.event);
   return {
     user: state.user.jwt,
     event: state.event

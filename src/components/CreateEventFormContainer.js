@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import { createEvent } from "../actions/eventActions"
-
+import { createEvent } from "../actions/eventActions";
 import CreateEventForm from "./CreateEventForm";
 
 class CreateEventFormContainer extends Component {
@@ -33,14 +31,15 @@ class CreateEventFormContainer extends Component {
     });
   };
 
-  render(){
+  render() {
     return (
-    <CreateEventForm 
-    onSubmit={this.onSubmit}
-    onChange={this.onChange}
-    values={this.state}
-  />
-    )}
+      <CreateEventForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
+    );
+  }
 }
 
-export default connect(null, {createEvent})(CreateEventFormContainer)
+export default connect(null, { createEvent })(CreateEventFormContainer);

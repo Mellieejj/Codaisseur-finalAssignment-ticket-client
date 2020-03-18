@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style/CreateEventForm.css"
+import "./style/CreateEventForm.css";
 
 export default class CreateEventFrom extends Component {
   render() {

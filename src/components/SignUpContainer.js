@@ -36,7 +36,7 @@ class SignupFormContainer extends Component {
           values={this.state}
           buttonName="Sign Up"
         />
-        {this.state.message}
+        <p>{this.state.message}</p>
       </div>
     );
   }

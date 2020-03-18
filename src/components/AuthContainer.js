@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import LoginFormContainer from "./LoginFormContainer";
 import SignUpContainer from "./SignUpContainer";
-import "./style/AuthContainer.css" 
+import "./style/AuthContainer.css";
 
 class AuthContainer extends Component {
   render() {

@@ -14,10 +14,10 @@ const loginUser = payload => {
 
 export function login(data) {
   return async function(dispatch) {
-    console.log("data", data);
     try {
       const response = await request.post(`${baseUrl}/login`).send(data);
       const action = loginUser(response.body);
+      console.log(action)
       await dispatch(action);
     } catch (error) {
       console.error(error);

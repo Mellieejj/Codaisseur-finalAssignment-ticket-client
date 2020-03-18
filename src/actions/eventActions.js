@@ -53,7 +53,6 @@ export const createEvent = data => (dispatch, getState) => {
 export const EVENT_FETCHED = "EVENT_FETCHED";
 
 const eventFetched = event => {
-  // console.log("logging user", user);
   return {
     type: EVENT_FETCHED,
     payload: event
@@ -61,14 +60,10 @@ const eventFetched = event => {
 };
 
 export const loadEvent = eventId => dispatch => {
-  console.log(eventId);
-  
   request
     .get(`${baseUrl}/events/${eventId}`)
     .send(eventId)
     .then(response => {
-      // console.log("loadUser", response.body);
-
       dispatch(eventFetched(response.body));
     })
     .catch(console.error);

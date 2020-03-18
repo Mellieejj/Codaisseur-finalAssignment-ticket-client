@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import "./style/AddTicketForm.css";
 
 export default class AddCommentForm extends Component {
   render() {
-    console.log("user test", this.props.user);
     return (
-      <div className="addTicket">
+      <div>
         <form onSubmit={this.props.onSubmit}>
           <h3>Add a Comment</h3>
           <textarea
@@ -15,7 +13,7 @@ export default class AddCommentForm extends Component {
             onChange={this.props.onChange}
             name="text"
           />
-<br />
+          <br />
           <button type="submit">Add Comment</button>
         </form>
       </div>

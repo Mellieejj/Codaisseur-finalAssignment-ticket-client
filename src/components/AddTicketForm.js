@@ -3,12 +3,10 @@ import "./style/AddTicketForm.css";
 
 export default class AddTicketForm extends Component {
   render() {
-    console.log("user test", this.props.user);
-    console.log("event test", this.props.event.id);
     return (
       <div className="addTicket">
         <form onSubmit={this.props.onSubmit}>
-          <h3>Add a Ticket</h3>
+          <h3>{this.props.buttonName} a Ticket</h3>
           <input
             placeholder="price"
             type="number"
@@ -31,7 +29,7 @@ export default class AddTicketForm extends Component {
             name="pictureUrl"
           ></input>
 
-          <button type="submit">Add Ticket for {this.props.event.name}</button>
+          <button type="submit">{this.props.buttonName} Ticket for {this.props.event.name}</button>
         </form>
       </div>
     );

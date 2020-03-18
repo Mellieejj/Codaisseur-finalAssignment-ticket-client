@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import "./style/EventList.css"
+import "./style/EventList.css";
 
 export default class EventList extends Component {
   render() {

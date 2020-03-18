@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createTicket } from "../actions/ticketActions";
+import { updateTicket } from "../actions/ticketActions";
 import AddTicketForm from "./AddTicketForm";
 
-class AddTicketFormContainer extends Component {
+class UpdateTicketFormContainer extends Component {
   state = {
     pictureUrl: "",
     price: "",
@@ -20,11 +20,12 @@ class AddTicketFormContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.createTicket(this.state);
+    this.props.updateTicket(this.props.ticket.id, this.state);
     this.setState({
       pictureUrl: "",
       price: "",
-      description: ""
+      description: "",
+      eventId: ""
     });
   };
 
@@ -36,18 +37,20 @@ class AddTicketFormContainer extends Component {
         values={this.state}
         user={this.props.user}
         event={this.props.event}
-        buttonName="Add"
+        buttonName="Update"
       />
     );
   }
 }
 
 function mapStateToProps(state) {
+  console.log("updateticket", state.ticket)
   return {
     user: state.user,
-    event: state.event
+    event: state.event,
+    ticket: state.ticket
   };
 }
-export default connect(mapStateToProps, { createTicket })(
-  AddTicketFormContainer
+export default connect(mapStateToProps, { updateTicket })(
+  UpdateTicketFormContainer
 );

@@ -17,3 +17,16 @@
   margin-bottom: 10px;
   background-color: #ffffff;
 }
+
+button {
+  margin-bottom: 10px;
+}
+
+.commentList {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: auto;
+  text-align: center;
+}

@@ -8,6 +8,7 @@ export default function(state = initialState, action = {}) {
       return action.payload;
     }
     case NEW_EVENT: {
+      console.log("new event", state)
       return [...state, action.payload];
     }
 

@@ -7,3 +7,11 @@
   border: 2px solid #61b3de;
   background-color: #ffffff;
 }
+
+.pageNum {
+  max-width: 45px;
+  border: 1px solid #61b3de;
+  color: #61b3de;
+  text-align: center;
+  font-weight: bold;
+}

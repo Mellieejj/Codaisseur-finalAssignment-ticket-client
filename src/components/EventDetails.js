@@ -60,7 +60,9 @@ export default class EventDetails extends Component {
   render() {
     if (this.props.event) {
       if (this.props.event.tickets) {
-        const tickets = this.props.event.tickets.map(ticket => {
+        const tickets = this.props.tickets.filter(ticket => 
+          ticket.eventId === this.props.event.id)
+          const eventTickets = tickets.map(ticket =>{
           const image = ticket.pictureUrl ? (
             <img src={ticket.pictureUrl} alt="" />
           ) : null;
@@ -71,7 +73,7 @@ export default class EventDetails extends Component {
             >
               <li key={ticket.id}>
                 {image}
-                <p>€{ticket.price.toFixed(2)}</p>
+                <p>€{parseFloat(ticket.price).toFixed(2)}</p>
                 <p>{ticket.description}</p>
               </li>
             </Link>
@@ -98,7 +100,7 @@ export default class EventDetails extends Component {
             )}
             {this.state.add ? <AddTicketFormContainer /> : null}
             <div className="tickets">
-              <ul>{tickets}</ul>
+              <ul>{eventTickets}</ul>
             </div>
           </div>
         );

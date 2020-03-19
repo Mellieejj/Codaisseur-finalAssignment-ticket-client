@@ -5,8 +5,8 @@ export default class CreateEventFrom extends Component {
   render() {
     return (
       <div className="addEvent">
-        <h3>Add a Event</h3>
         <form onSubmit={this.props.onSubmit}>
+          <h3>Add a Event</h3>
           <input
             placeholder="Event name"
             type="text"
@@ -27,14 +27,16 @@ export default class CreateEventFrom extends Component {
             value={this.props.values.pictureUrl}
             onChange={this.props.onChange}
             name="pictureUrl"
-          ></input>
+          ></input>{" "}
+          <label> From: </label>{" "}
           <input
             placeholder="Starting date"
             type="date"
             value={this.props.values.startingDate}
             onChange={this.props.onChange}
             name="startingDate"
-          ></input>
+          ></input>{" "}
+          <label>To:</label>{" "}
           <input
             placeholder="End date"
             type="date"
@@ -42,7 +44,6 @@ export default class CreateEventFrom extends Component {
             onChange={this.props.onChange}
             name="endDate"
           ></input>
-
           <button type="submit">Add Event</button>
         </form>
       </div>

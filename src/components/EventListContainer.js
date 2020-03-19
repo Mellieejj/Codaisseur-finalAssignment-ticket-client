@@ -25,7 +25,7 @@ class EventListContainer extends Component {
 }
 
 function mapStateToProps(state) {
-// console.log("eventListContainer", state);
+console.log("eventListContainer", state.events);
 
   return {
     events: state.events,

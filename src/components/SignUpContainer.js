@@ -6,8 +6,7 @@ import { createUser } from "../actions/userActions";
 class SignupFormContainer extends Component {
   state = {
     name: "",
-    password: "",
-    message: ""
+    password: ""
   };
 
   onSubmit = event => {
@@ -15,8 +14,7 @@ class SignupFormContainer extends Component {
     this.props.createUser(this.state);
     this.setState({
       name: "",
-      password: "",
-      message: "Yeah, you can login with you new created account :-)"
+      password: ""
     });
   };
 
@@ -36,7 +34,6 @@ class SignupFormContainer extends Component {
           values={this.state}
           buttonName="Sign Up"
         />
-        <p>{this.state.message}</p>
       </div>
     );
   }

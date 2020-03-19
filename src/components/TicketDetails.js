@@ -51,9 +51,8 @@ export default class TicketDetails extends Component {
       : null;
 
     const percentageRisk =
-      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) *
-      100;
-    const priceRisk = percentageRisk > 10 ? 10 : percentageRisk;
+      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) * 100
+    const priceRisk = percentageRisk < -10 ? -10 : percentageRisk
 
     //total risk
     const totalRisk = commentRisk + userRisk + timeRisk + priceRisk + 5;
@@ -62,8 +61,8 @@ export default class TicketDetails extends Component {
     let color = "black";
     if (risk < 30) {
       color = "#97BA28";
-    } else if (risk > 30 || risk < 55) {
-      color = "#FFE400";
+    } else if (risk >= 30 && risk <= 55) {
+      color = "#FFA500";
     } else {
       color = "#FF3232";
     }
@@ -72,7 +71,7 @@ export default class TicketDetails extends Component {
   };
 
   render() {
-    console.log("TicketDetails", this.props.event.tickets);
+    // console.log("TicketDetails", this.props.event.tickets);
     return (
       <div>
         <div className="ticketDetails">

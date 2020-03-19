@@ -3,8 +3,7 @@ import "./style/TicketDetails.css";
 
 export default class Comments extends Component {
   render() {
-    console.log("comments", this.props.comments);
-    
+    // console.log("comments", this.props.comments);
     
       const ticketComments = this.props.comments ? this.props.comments.filter(comment => comment.ticketId === this.props.ticket.id) : null
       const commentList =ticketComments.map(comment => {

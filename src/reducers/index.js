@@ -5,6 +5,7 @@ import event from "./event";
 import tickets from "./tickets";
 import ticket from "./ticket";
 import comments from "./comments";
+import errors from "./errors";
 
 export default combineReducers({
   user,
@@ -12,5 +13,6 @@ export default combineReducers({
   event,
   tickets,
   ticket,
-  comments
+  comments,
+  errors
 });

@@ -20,6 +20,7 @@ export default class EventDetails extends Component {
       });
     }
   };
+
   risk = () => {
     //more than 3 comment + 5% risk
     const commentlength = this.props.ticket.comments
@@ -42,27 +43,41 @@ export default class EventDetails extends Component {
     const hours = moment(time).format("Hmm");
     const timeRisk = hours > 900 && hours < 1700 ? -10 : 10;
 
+    //price risk
+    const averageprice = this.props.event.tickets
+      ? this.props.event.tickets.reduce((acc, curr) => {
+          return acc + parseFloat(curr.price);
+        }, 0) / this.props.event.tickets.length
+      : null;
+
+    const percentageRisk =
+      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) *
+      100;
+    const priceRisk = percentageRisk < -10 ? -10 : percentageRisk;
+
     //total risk
-    const totalRisk = commentRisk + userRisk + timeRisk + 5;
+    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk + 5;
     const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
 
     let color = "black";
     if (risk < 30) {
       color = "#97BA28";
-    } else if (risk > 30 || risk < 55) {
-      color = "#FFE400";
+    } else if (risk >= 30 && risk <= 55) {
+      color = "#FFA500";
     } else {
       color = "#FF3232";
     }
 
-    return <p style={{ color: color }}>Fraud risk: {risk}%</p>;
+    return <p style={{ color: color }}>Fraud risk: {risk.toFixed(1)}%</p>;
   };
+
   render() {
     if (this.props.event) {
       if (this.props.event.tickets) {
-        const tickets = this.props.tickets.filter(ticket => 
-          ticket.eventId === this.props.event.id)
-          const eventTickets = tickets.map(ticket =>{
+        const tickets = this.props.tickets.filter(
+          ticket => ticket.eventId === this.props.event.id
+        );
+        const eventTickets = tickets.map(ticket => {
           const image = ticket.pictureUrl ? (
             <img src={ticket.pictureUrl} alt="" />
           ) : null;

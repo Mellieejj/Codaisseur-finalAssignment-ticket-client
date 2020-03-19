@@ -79,7 +79,7 @@ export default class TicketDetails extends Component {
           <p>
             Price: €{" "}
             {this.props.ticket.price
-              ? this.props.ticket.price.toFixed(2)
+              ? parseFloat(this.props.ticket.price).toFixed(2)
               : null}
           </p>
           <p>Description Ticket: {this.props.ticket.description}</p>

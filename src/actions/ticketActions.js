@@ -2,7 +2,7 @@ import request from "superagent";
 // import {NEW_EVENT} from "./eventActions"
 const baseUrl = "http://localhost:4000";
 
-export const ALL_TICKETS = "ALL_TICKETS"
+export const ALL_TICKETS = "ALL_TICKETS";
 
 function allTickets(payload) {
   return {
@@ -78,12 +78,13 @@ const ticketUpdated = ticket => ({
 export const updateTicket = (id, data) => (dispatch, getState) => {
   const state = getState();
   const { user } = state;
-
+  console.log("data", data);
   request
     .put(`${baseUrl}/tickets/${id}`)
     .set(`Authorization`, `Bearer ${user.jwt}`)
     .send(data)
     .then(res => {
       dispatch(ticketUpdated(res.body));
-    });
+    })
+    .catch(console.error);
 };

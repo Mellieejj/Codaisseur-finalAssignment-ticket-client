@@ -41,7 +41,7 @@ class TicketDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("ticketDetailsContainer", state.comments);
+  // console.log("ticketDetailsContainer", state.event);
 
   return {
     user: state.user,

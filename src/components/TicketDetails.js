@@ -43,8 +43,20 @@ export default class TicketDetails extends Component {
     const hours = moment(time).format("Hmm");
     const timeRisk = hours > 900 && hours < 1700 ? -10 : 10;
 
+    //price risk
+    const averageprice = this.props.event.tickets
+      ? this.props.event.tickets.reduce((acc, curr) => {
+          return acc + parseFloat(curr.price);
+        }, 0) / this.props.event.tickets.length
+      : null;
+
+    const percentageRisk =
+      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) *
+      100;
+    const priceRisk = percentageRisk > 10 ? 10 : percentageRisk;
+
     //total risk
-    const totalRisk = commentRisk + userRisk + timeRisk + 5;
+    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk + 5;
     const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
 
     let color = "black";
@@ -56,11 +68,11 @@ export default class TicketDetails extends Component {
       color = "#FF3232";
     }
 
-    return <p style={{ color: color }}>Fraud risk: {risk}%</p>;
+    return <p style={{ color: color }}>Fraud risk: {risk.toFixed(1)}%</p>;
   };
 
   render() {
-    console.log("TicketDetails",this.props.user)
+    console.log("TicketDetails", this.props.event.tickets);
     return (
       <div>
         <div className="ticketDetails">

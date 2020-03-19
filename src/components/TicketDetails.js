@@ -60,7 +60,7 @@ export default class TicketDetails extends Component {
   };
 
   render() {
-    // console.log(this.props.ticket.comments)
+    console.log("TicketDetails",this.props.user)
     return (
       <div>
         <div className="ticketDetails">

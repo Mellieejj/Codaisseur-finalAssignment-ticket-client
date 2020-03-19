@@ -27,7 +27,7 @@ class EventDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state event", state.tickets);
+  console.log("state event", state.user);
   return {
     user: state.user.jwt,
     event: state.event,

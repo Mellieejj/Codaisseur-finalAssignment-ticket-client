@@ -17,7 +17,7 @@ export function login(data) {
     try {
       const response = await request.post(`${baseUrl}/login`).send(data);
       const action = loginUser(response.body);
-      console.log(action)
+      // console.log(action)
       await dispatch(action);
     } catch (error) {
       console.error(error);

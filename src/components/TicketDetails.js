@@ -51,8 +51,9 @@ export default class TicketDetails extends Component {
       : null;
 
     const percentageRisk =
-      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) * 100
-    const priceRisk = percentageRisk < -10 ? -10 : percentageRisk
+      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) *
+      100;
+    const priceRisk = percentageRisk < -10 ? -10 : percentageRisk;
 
     //total risk
     const totalRisk = commentRisk + userRisk + timeRisk + priceRisk + 5;
@@ -100,6 +101,15 @@ export default class TicketDetails extends Component {
             <button onClick={() => this.onClick()}>Change Ticket</button>
           )}
           {!this.state.update ? null : <UpdateTicketFormContainer />}
+          <p
+            style={{
+              color: "#FF3232",
+              backgroundColor: "#FFFFFF",
+              fontSize: "large"
+            }}
+          >
+            {this.props.errors ? this.props.errors : null}
+          </p>
         </div>
       </div>
     );

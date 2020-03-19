@@ -23,6 +23,7 @@ class TicketDetailsContainer extends Component {
           user={this.props.user.jwt}
           event={this.props.event}
           tickets={this.props.tickets}
+          errors={this.props.errors}
         />
         <div className="comments">
           {this.props.user.jwt ? (
@@ -41,14 +42,13 @@ class TicketDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log("ticketDetailsContainer", state.event);
-
   return {
     user: state.user,
     event: state.event,
     ticket: state.ticket,
     comments: state.comments,
-    tickets: state.tickets
+    tickets: state.tickets,
+    errors: state.errors
   };
 }
 

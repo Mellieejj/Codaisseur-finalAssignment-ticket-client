@@ -8,7 +8,7 @@
   background-color: #ffffff;
 }
 
-.ticketDetails>img {
+.ticketDetails > img {
   max-width: 25%;
 }
 .comments {

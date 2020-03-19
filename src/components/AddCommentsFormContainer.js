@@ -18,7 +18,7 @@ class AddCommentsFormContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("onSubmit",this.state);
+    console.log("onSubmit", this.state);
 
     this.props.createComment(this.state);
     this.setState({

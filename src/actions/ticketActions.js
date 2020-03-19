@@ -1,5 +1,5 @@
 import request from "superagent";
-// import {NEW_EVENT} from "./eventActions"
+
 const baseUrl = "http://localhost:4000";
 
 export const ALL_TICKETS = "ALL_TICKETS";

@@ -7,20 +7,32 @@ import "./style/AuthContainer.css";
 
 class AuthContainer extends Component {
   render() {
-    if (!this.props.user) {
-      return (<div>
-        <p style={{ color: "#B22222", backgroundColor: "#ffffff", fontSize: "large"}}>
-        {this.props.errors ? this.props.errors : null}
-      </p>
-        <div className="auth">
-          <LoginFormContainer errors={this.props.errors} />
-          <SignUpContainer />
-        </div></div>
+    if (!this.props.user.jwt) {
+      return (
+        <div>
+          <p
+            style={{
+              color: "#FF3232",
+              backgroundColor: "#FFFFFF",
+              fontSize: "large"
+            }}
+          >
+            {this.props.errors ? this.props.errors : null}
+          </p>
+          <div className="auth">
+            <LoginFormContainer errors={this.props.errors} />
+            <SignUpContainer />
+          </div>
+        </div>
       );
     } else {
       return (
         <div>
-          <p>You are logged in!</p>
+          <p style={{
+              color: "#97BA28",
+              backgroundColor: "#FFFFFF",
+              fontSize: "large"
+            }}>You are logged in as {this.props.user.name}!</p>
         </div>
       );
     }
@@ -29,7 +41,7 @@ class AuthContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user.jwt,
+    user: state.user,
     errors: state.errors
   };
 }

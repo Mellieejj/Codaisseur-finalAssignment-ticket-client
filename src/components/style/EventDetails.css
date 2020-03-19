@@ -19,10 +19,10 @@ li {
   background-color: #ffffff;
 }
 
-li>p{
+li > p {
   margin: auto;
 }
 
-li>img{
+li > img {
   max-width: 25%;
 }

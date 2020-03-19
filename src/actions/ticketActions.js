@@ -1,5 +1,5 @@
 import request from "superagent";
-import { displayError, removeError } from "./userActions";
+import { displayError } from "./userActions";
 
 const baseUrl = "http://localhost:4000";
 
@@ -86,7 +86,6 @@ export const updateTicket = (id, data) => (dispatch, getState) => {
     .send(data)
     .then(res => {
       dispatch(ticketUpdated(res.body));
-      dispatch(removeError());
     })
     .catch(error => {
       if (error.response) {

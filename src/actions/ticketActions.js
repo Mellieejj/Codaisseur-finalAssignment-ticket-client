@@ -79,7 +79,7 @@ const ticketUpdated = ticket => ({
 export const updateTicket = (id, data) => (dispatch, getState) => {
   const state = getState();
   const { user } = state;
-  console.log("data", data);
+  // console.log("data", data);
   request
     .put(`${baseUrl}/tickets/${id}`)
     .set(`Authorization`, `Bearer ${user.jwt}`)

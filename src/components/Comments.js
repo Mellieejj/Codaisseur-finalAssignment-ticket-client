@@ -3,7 +3,7 @@ import "./style/TicketDetails.css";
 
 export default class Comments extends Component {
   render() {
-    console.log("comments", this.props.ticket.comments);
+    // console.log("comments", this.props.ticket.comments);
     const commentArray = this.props.ticket.comments;
     const ticketComments = this.props.comments
       ? this.props.comments.filter(

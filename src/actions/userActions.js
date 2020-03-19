@@ -44,7 +44,7 @@ export function login(data) {
         const errorMessage = displayError(error.response.body.message);
         return dispatch(errorMessage);
       }
-      console.log(error);
+      console.error;
     }
   };
 }

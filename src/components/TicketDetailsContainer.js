@@ -22,7 +22,7 @@ class TicketDetailsContainer extends Component {
       <div>
         <TicketDetails
           ticket={this.props.ticket}
-          user={this.props.user.jwt}
+          user={this.props.user}
           event={this.props.event}
           tickets={this.props.tickets}
           errors={this.props.errors}

@@ -106,9 +106,11 @@ export default class TicketDetails extends Component {
           <p>Description Ticket: {this.props.ticket.description}</p>
 
           {/* update ticket */}
-          {!this.props.user ? null : (
+          {this.props.user.jwt ? this.props.user.name === ticketAuthor.name ? 
+          (
             <button onClick={() => this.onClick()}>Change Ticket</button>
-          )}
+          )
+           : null : null }
           {!this.state.update ? null : <UpdateTicketFormContainer />}
           <p
             style={{

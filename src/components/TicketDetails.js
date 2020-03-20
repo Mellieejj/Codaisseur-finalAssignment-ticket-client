@@ -72,6 +72,10 @@ export default class TicketDetails extends Component {
   };
 
   render() {
+    const ticketAuthor = this.props.users
+      ? this.props.users.find(user => user.id === this.props.ticket.userId)
+      : null;
+
     return (
       <div>
         <div className="ticketDetails">
@@ -87,6 +91,12 @@ export default class TicketDetails extends Component {
             <img src={this.props.ticket.pictureUrl} alt="" />
           ) : null}
           {this.risk()}
+          <p>
+            Author:{" "}
+            {ticketAuthor
+              ? ticketAuthor.name[0].toUpperCase() + ticketAuthor.name.substr(1)
+              : null}
+          </p>
           <p>
             Price: €{" "}
             {this.props.ticket.price

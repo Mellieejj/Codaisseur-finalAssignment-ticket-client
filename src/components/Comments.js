@@ -11,18 +11,23 @@ export default class Comments extends Component {
         )
       : null;
     const commentList = ticketComments.map(comment => {
+      console.log(comment.userId);
+
       return <li key={comment.id}> {comment.text}</li>;
     });
 
     return (
       <div className="commentList">
-      
         <h3>Comments</h3>
         {commentArray ? (
           commentArray.length > 0 ? (
-              <ul>{commentList}</ul>
-          ) : "No Comments yet"
-        ) : "Loading.."}
+            <ul>{commentList}</ul>
+          ) : (
+            "No Comments yet"
+          )
+        ) : (
+          "Loading.."
+        )}
       </div>
     );
   }

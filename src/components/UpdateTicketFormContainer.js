@@ -44,7 +44,6 @@ class UpdateTicketFormContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log("updateticket", state.ticket)
   return {
     user: state.user,
     event: state.event,

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { loadTicket, getTickets } from "../actions/ticketActions";
 import { loadEvent } from "../actions/eventActions";
 import { getComments } from "../actions/commentActions";
+import { getUsers } from "../actions/userActions";
 import TicketDetails from "./TicketDetails";
 import AddCommentsFormContainer from "./AddCommentsFormContainer";
 import Comments from "./Comments";
@@ -13,6 +14,7 @@ class TicketDetailsContainer extends Component {
     this.props.loadTicket(this.props.match.params.ticketId);
     this.props.getTickets();
     this.props.getComments();
+    this.props.getUsers();
   }
 
   render() {
@@ -24,6 +26,7 @@ class TicketDetailsContainer extends Component {
           event={this.props.event}
           tickets={this.props.tickets}
           errors={this.props.errors}
+          users={this.props.users}
         />
         <div className="comments">
           {this.props.user.jwt ? (
@@ -34,6 +37,7 @@ class TicketDetailsContainer extends Component {
             ticket={this.props.ticket}
             comments={this.props.comments}
             user={this.props.user.name}
+            users={this.props.users}
           />
         </div>
       </div>
@@ -44,6 +48,7 @@ class TicketDetailsContainer extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
+    users: state.users,
     event: state.event,
     ticket: state.ticket,
     comments: state.comments,
@@ -52,7 +57,13 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = { loadTicket, loadEvent, getTickets, getComments };
+const mapDispatchToProps = {
+  loadTicket,
+  loadEvent,
+  getTickets,
+  getComments,
+  getUsers
+};
 
 export default connect(
   mapStateToProps,

@@ -29,7 +29,9 @@ export default class AddTicketForm extends Component {
             name="pictureUrl"
           ></input>
 
-          <button type="submit">{this.props.buttonName} Ticket for {this.props.event.name}</button>
+          <button type="submit">
+            {this.props.buttonName} Ticket for {this.props.event.name}
+          </button>
         </form>
       </div>
     );

@@ -8,7 +8,7 @@ export default function(state = initialState, action = {}) {
       return action.payload;
     }
     case TICKET_UPDATED: {
-      return action.payload
+      return action.payload;
     }
     default:
       return state;

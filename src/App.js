@@ -11,7 +11,11 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Route exact path="/events/:eventId/:ticketId" component={TicketDetailsContainer} />
+        <Route
+          exact
+          path="/events/:eventId/:ticketId"
+          component={TicketDetailsContainer}
+        />
         <Route exact path="/events/:eventId" component={EventListContainer} />
         <Route exact path="/" component={Container} />
       </div>

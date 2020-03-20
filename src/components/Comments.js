@@ -3,17 +3,29 @@ import "./style/TicketDetails.css";
 
 export default class Comments extends Component {
   render() {
-    // console.log("comments", this.props.ticket.comments);
     const commentArray = this.props.ticket.comments;
     const ticketComments = this.props.comments
       ? this.props.comments.filter(
           comment => comment.ticketId === this.props.ticket.id
         )
       : null;
-    const commentList = ticketComments.map(comment => {
-      console.log(comment.userId);
 
-      return <li key={comment.id}> {comment.text}</li>;
+    const commentList = ticketComments.map(comment => {
+      const commentUser = this.props.users
+        ? this.props.users.find(user => {
+            return comment.userId === user.id;
+          })
+        : null;
+
+      return (
+        <li key={comment.id}>
+          {" "}
+          {commentUser
+            ? commentUser.name[0].toUpperCase() + commentUser.name.substr(1)
+            : null}{" "}
+          says: {comment.text}
+        </li>
+      );
     });
 
     return (

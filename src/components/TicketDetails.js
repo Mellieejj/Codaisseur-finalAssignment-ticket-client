@@ -72,7 +72,6 @@ export default class TicketDetails extends Component {
   };
 
   render() {
-    // console.log("TicketDetails", this.props.event.tickets);
     return (
       <div>
         <div className="ticketDetails">

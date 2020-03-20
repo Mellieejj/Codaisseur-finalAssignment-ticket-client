@@ -18,8 +18,6 @@ class AddCommentsFormContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    // console.log("onSubmit", this.state);
-
     this.props.createComment(this.state);
     this.setState({
       text: "",
@@ -43,7 +41,6 @@ class AddCommentsFormContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log("state ticket", state.ticket);
   return {
     user: state.user.jwt,
     event: state.event,

@@ -28,11 +28,15 @@ class AuthContainer extends Component {
     } else {
       return (
         <div>
-          <p style={{
+          <p
+            style={{
               color: "#97BA28",
               backgroundColor: "#FFFFFF",
               fontSize: "large"
-            }}>You are logged in as {this.props.user.name}!</p>
+            }}
+          >
+            You are logged in as {this.props.user.name}!
+          </p>
         </div>
       );
     }

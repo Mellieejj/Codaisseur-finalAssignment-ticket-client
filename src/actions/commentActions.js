@@ -36,7 +36,6 @@ function newComment(payload) {
 
 export const createComment = data => (dispatch, getState) => {
   const state = getState();
-  // console.log("create Comment", state);
   const { user } = state;
 
   request

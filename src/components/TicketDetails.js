@@ -80,7 +80,7 @@ export default class TicketDetails extends Component {
       <div>
         <div className="ticketDetails">
           <div>
-            <p>{this.props.user ? null : <Link to={"/"}>Login </Link>}</p>{" "}
+            <p>{this.props.user.jwt ? null : <Link to={"/"}>Login </Link>}</p>{" "}
             <p>
               <Link to={`/events/${this.props.event.id}`}>Back to Event</Link>
             </p>

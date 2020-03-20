@@ -68,7 +68,7 @@ export default class TicketDetails extends Component {
       color = "#FF3232";
     }
 
-    return <p style={{ color: color }}>Fraud risk: {risk.toFixed(1)}%</p>;
+    return <p style={{ color: color }}>We calculated that the risk of this ticket being a fraud is {risk.toFixed(1)}%</p>;
   };
 
   render() {

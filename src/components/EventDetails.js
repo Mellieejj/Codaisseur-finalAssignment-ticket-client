@@ -41,9 +41,7 @@ export default class EventDetails extends Component {
 
             //user only 1 ticket + 10% risk
             const userArray = this.props.tickets
-              ? this.props.tickets.filter(
-                  ticket => ticket.userId === ticket.userId
-                )
+              ? this.props.tickets.filter(tick => tick.userId === ticket.userId)
               : null;
             const userRisk = userArray.length === 1 ? 10 : 0;
 
@@ -98,7 +96,7 @@ export default class EventDetails extends Component {
             </Link>
           );
         });
-        
+
         return (
           <div className="eventDetails">
             <div>

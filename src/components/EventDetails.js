@@ -21,56 +21,6 @@ export default class EventDetails extends Component {
     }
   };
 
-  risk = () => {
-    //more than 3 comment + 5% risk
-    const commentlength = this.props.ticket.comments
-      ? this.props.ticket.comments.length
-      : false;
-    const commentRisk = commentlength > 3 ? 5 : 0;
-
-    //user only 1 ticket + 10% risk
-    const userArray = this.props.tickets
-      ? this.props.tickets.filter(
-          ticket => ticket.userId === this.props.ticket.userId
-        )
-      : null;
-    const userRisk = userArray.length === 1 ? 10 : 0;
-
-    //time of adding ticket 9-17u -10% 17-9u +10%
-    const time = this.props.ticket.createdAt
-      ? new Date(this.props.ticket.createdAt)
-      : null;
-    const hours = moment(time).format("Hmm");
-    const timeRisk = hours > 900 && hours < 1700 ? -10 : 10;
-
-    //price risk
-    const averageprice = this.props.event.tickets
-      ? this.props.event.tickets.reduce((acc, curr) => {
-          return acc + parseFloat(curr.price);
-        }, 0) / this.props.event.tickets.length
-      : null;
-
-    const percentageRisk =
-      ((averageprice - parseFloat(this.props.ticket.price)) / averageprice) *
-      100;
-    const priceRisk = percentageRisk < -10 ? -10 : percentageRisk;
-
-    //total risk
-    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk;
-    const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
-
-    let color = "black";
-    if (risk < 30) {
-      color = "#97BA28";
-    } else if (risk >= 30 && risk <= 55) {
-      color = "#FFA500";
-    } else {
-      color = "#FF3232";
-    }
-
-    return <p style={{ color: color }}>Fraud risk: {risk.toFixed(1)}%</p>;
-  };
-
   render() {
     if (this.props.event) {
       if (this.props.event.tickets) {
@@ -81,6 +31,60 @@ export default class EventDetails extends Component {
           const image = ticket.pictureUrl ? (
             <img src={ticket.pictureUrl} alt="" />
           ) : null;
+
+          const riskmethod = () => {
+            //more than 3 comment + 5% risk
+            const commentlength = ticket.comments
+              ? ticket.comments.length
+              : false;
+            const commentRisk = commentlength > 3 ? 5 : 0;
+
+            //user only 1 ticket + 10% risk
+            const userArray = this.props.tickets
+              ? this.props.tickets.filter(
+                  ticket => ticket.userId === ticket.userId
+                )
+              : null;
+            const userRisk = userArray.length === 1 ? 10 : 0;
+
+            //time of adding ticket 9-17u -10% 17-9u +10%
+            const time = ticket.createdAt ? new Date(ticket.createdAt) : null;
+            const hours = moment(time).format("Hmm");
+            const timeRisk = hours > 900 && hours < 1700 ? -10 : 10;
+
+            //price risk
+            const averageprice = this.props.event.tickets
+              ? this.props.event.tickets.reduce((acc, curr) => {
+                  return acc + parseFloat(curr.price);
+                }, 0) / this.props.event.tickets.length
+              : null;
+
+            const percentageRisk =
+              ((averageprice - parseFloat(ticket.price)) / averageprice) * 100;
+            const priceRisk = percentageRisk < -10 ? -10 : percentageRisk;
+
+            //total risk
+            const totalRisk = commentRisk + userRisk + timeRisk + priceRisk;
+            const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
+
+            let color = "black";
+            if (risk < 30) {
+              color = "#97BA28";
+            } else if (risk >= 30 && risk <= 55) {
+              color = "#FFA500";
+            } else {
+              color = "#FF3232";
+            }
+
+            return (
+              <p style={{ color: color }}>
+                €{parseFloat(ticket.price).toFixed(2)}
+              </p>
+            );
+          };
+
+          const risk = riskmethod();
+
           return (
             <Link
               key={ticket.id}
@@ -88,12 +92,13 @@ export default class EventDetails extends Component {
             >
               <li key={ticket.id}>
                 {image}
-                <p>€{parseFloat(ticket.price).toFixed(2)}</p>
+                {risk}
                 <p>{ticket.description}</p>
               </li>
             </Link>
           );
         });
+        
         return (
           <div className="eventDetails">
             <div>

@@ -88,15 +88,22 @@ export default class EventList extends Component {
         })
       : null;
 
+    //sorted by first happening first
+    const sortedEvents = [...futureEvents].sort((a, b) => {
+      const aDate = new Date(a.startingDate);
+      const bDate = new Date(b.startingDate);
+      return aDate - bDate;
+    });
+
     //pagination
     const { currentPage, eventsPerPage } = this.state;
     const lastIndex = currentPage * eventsPerPage;
     const firstIndex = lastIndex - eventsPerPage;
-    const currentEvents = futureEvents
-      ? futureEvents.slice(firstIndex, lastIndex)
+    const currentEvents = sortedEvents
+      ? sortedEvents.slice(firstIndex, lastIndex)
       : null;
-    const totalPages = futureEvents
-      ? Math.ceil(futureEvents.length / eventsPerPage)
+    const totalPages = sortedEvents
+      ? Math.ceil(sortedEvents.length / eventsPerPage)
       : null;
 
     //style pagination form

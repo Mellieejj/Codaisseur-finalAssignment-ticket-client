@@ -56,7 +56,7 @@ export default class EventDetails extends Component {
     const priceRisk = percentageRisk < -10 ? -10 : percentageRisk;
 
     //total risk
-    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk + 5;
+    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk;
     const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
 
     let color = "black";

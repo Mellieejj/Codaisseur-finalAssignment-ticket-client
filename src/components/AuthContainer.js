@@ -26,6 +26,7 @@ class AuthContainer extends Component {
         </div>
       );
     } else {
+      const userName = this.props.user.name
       return (
         <div>
           <p
@@ -35,7 +36,7 @@ class AuthContainer extends Component {
               fontSize: "large"
             }}
           >
-            You are logged in as {this.props.user.name}!
+            You are logged in as {((userName[0].toUpperCase()) + this.props.user.name.substr(1))}!
           </p>
         </div>
       );

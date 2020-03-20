@@ -3,7 +3,6 @@ import "./style/TicketDetails.css";
 
 export default class Comments extends Component {
   render() {
-    const commentArray = this.props.ticket.comments;
     const ticketComments = this.props.comments
       ? this.props.comments.filter(
           comment => comment.ticketId === this.props.ticket.id
@@ -31,15 +30,7 @@ export default class Comments extends Component {
     return (
       <div className="commentList">
         <h3>Comments</h3>
-        {commentArray ? (
-          commentArray.length > 0 ? (
-            <ul>{commentList}</ul>
-          ) : (
-            "No Comments yet"
-          )
-        ) : (
-          "Loading.."
-        )}
+        <ul>{commentList}</ul>
       </div>
     );
   }

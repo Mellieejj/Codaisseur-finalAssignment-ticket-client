@@ -56,7 +56,7 @@ export default class TicketDetails extends Component {
     const priceRisk = percentageRisk < -10 ? -10 : percentageRisk;
 
     //total risk
-    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk;
+    const totalRisk = commentRisk + userRisk + timeRisk + priceRisk + 5;
     const risk = totalRisk < 5 ? 5 : totalRisk > 95 ? 95 : totalRisk;
 
     let color = "black";
@@ -68,7 +68,12 @@ export default class TicketDetails extends Component {
       color = "#FF3232";
     }
 
-    return <p style={{ color: color }}>We calculated that the risk of this ticket being a fraud is {risk.toFixed(1)}%</p>;
+    return (
+      <p style={{ color: color }}>
+        We calculated that the risk of this ticket being a fraud is{" "}
+        {risk.toFixed(1)}%
+      </p>
+    );
   };
 
   render() {
@@ -106,11 +111,11 @@ export default class TicketDetails extends Component {
           <p>Description Ticket: {this.props.ticket.description}</p>
 
           {/* update ticket */}
-          {this.props.user.jwt ? this.props.user.name === ticketAuthor.name ? 
-          (
-            <button onClick={() => this.onClick()}>Change Ticket</button>
-          )
-           : null : null }
+          {/* {this.props.user.jwt ? this.props.user.name === ticketAuthor.name ?  */}
+          {/* ( */}
+          <button onClick={() => this.onClick()}>Change Ticket</button>
+          {/* )
+           : null : null } */}
           {!this.state.update ? null : <UpdateTicketFormContainer />}
           <p
             style={{

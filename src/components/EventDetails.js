@@ -86,7 +86,7 @@ export default class EventDetails extends Component {
           return (
             <Link
               key={ticket.id}
-              to={`/events/${this.props.event.id}/${ticket.id}`}
+              to={`/events/${this.props.event.id}/tickets/${ticket.id}`}
             >
               <li key={ticket.id}>
                 {image}

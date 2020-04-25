@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Route
           exact
-          path="/events/:eventId/:ticketId"
+          path="/events/:eventname/tickets/:ticketId"
           component={TicketDetailsContainer}
         />
         <Route exact path="/events/:eventId" component={EventListContainer} />

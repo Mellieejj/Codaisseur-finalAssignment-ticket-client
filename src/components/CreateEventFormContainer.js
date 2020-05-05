@@ -9,16 +9,16 @@ class CreateEventFormContainer extends Component {
     description: "",
     pictureUrl: "",
     startingDate: "",
-    endDate: ""
+    endDate: "",
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     this.props.createEvent(this.state);
 
@@ -27,7 +27,7 @@ class CreateEventFormContainer extends Component {
       description: "",
       pictureUrl: "",
       startingDate: "",
-      endDate: ""
+      endDate: "",
     });
   };
 

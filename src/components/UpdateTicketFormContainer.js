@@ -8,24 +8,24 @@ class UpdateTicketFormContainer extends Component {
     pictureUrl: "",
     price: "",
     description: "",
-    eventId: ""
+    eventId: "",
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-      eventId: this.props.event.id
+      eventId: this.props.event.id,
     });
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     this.props.updateTicket(this.props.ticket.id, this.state);
     this.setState({
       pictureUrl: "",
       price: "",
       description: "",
-      eventId: ""
+      eventId: "",
     });
   };
 
@@ -47,7 +47,7 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     event: state.event,
-    ticket: state.ticket
+    ticket: state.ticket,
   };
 }
 export default connect(mapStateToProps, { updateTicket })(

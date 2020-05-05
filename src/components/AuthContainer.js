@@ -14,7 +14,7 @@ class AuthContainer extends Component {
             style={{
               color: "#FF3232",
               backgroundColor: "#FFFFFF",
-              fontSize: "large"
+              fontSize: "large",
             }}
           >
             {this.props.errors ? this.props.errors : null}
@@ -26,17 +26,18 @@ class AuthContainer extends Component {
         </div>
       );
     } else {
-      const userName = this.props.user.name
+      const userName = this.props.user.name;
       return (
         <div>
           <p
             style={{
               color: "#97BA28",
               backgroundColor: "#FFFFFF",
-              fontSize: "large"
+              fontSize: "large",
             }}
           >
-            You are logged in as {((userName[0].toUpperCase()) + this.props.user.name.substr(1))}!
+            You are logged in as{" "}
+            {userName[0].toUpperCase() + this.props.user.name.substr(1)}!
           </p>
         </div>
       );
@@ -47,7 +48,7 @@ class AuthContainer extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    errors: state.errors
+    errors: state.errors,
   };
 }
 

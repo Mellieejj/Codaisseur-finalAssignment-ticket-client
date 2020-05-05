@@ -6,22 +6,22 @@ import AddCommentForm from "./AddCommentForm";
 class AddCommentsFormContainer extends Component {
   state = {
     text: "",
-    ticketId: ""
+    ticketId: "",
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-      ticketId: this.props.ticket.id
+      ticketId: this.props.ticket.id,
     });
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     this.props.createComment(this.state);
     this.setState({
       text: "",
-      ticketId: ""
+      ticketId: "",
     });
   };
 
@@ -44,7 +44,7 @@ function mapStateToProps(state) {
   return {
     user: state.user.jwt,
     event: state.event,
-    ticket: state.ticket
+    ticket: state.ticket,
   };
 }
 

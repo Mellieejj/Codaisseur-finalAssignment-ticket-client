@@ -8,7 +8,7 @@ export const ALL_TICKETS = "ALL_TICKETS";
 function allTickets(payload) {
   return {
     type: ALL_TICKETS,
-    payload
+    payload,
   };
 }
 
@@ -18,7 +18,7 @@ export const getTickets = () => (dispatch, getState) => {
 
   if (!tickets.length) {
     request(`${baseUrl}/tickets`)
-      .then(response => {
+      .then((response) => {
         const action = allTickets(response.body);
         dispatch(action);
       })
@@ -31,11 +31,11 @@ export const NEW_TICKET = "NEW_TICKET";
 function newTicket(payload) {
   return {
     type: NEW_TICKET,
-    payload
+    payload,
   };
 }
 
-export const createTicket = data => (dispatch, getState) => {
+export const createTicket = (data) => (dispatch, getState) => {
   const state = getState();
   const { user } = state;
 
@@ -43,7 +43,7 @@ export const createTicket = data => (dispatch, getState) => {
     .post(`${baseUrl}/tickets`)
     .set(`Authorization`, `Bearer ${user.jwt}`)
     .send(data)
-    .then(response => {
+    .then((response) => {
       const action = newTicket(response.body);
       dispatch(action);
     })
@@ -52,18 +52,18 @@ export const createTicket = data => (dispatch, getState) => {
 
 export const TICKET_FETCHED = "TICKET_FETCHED";
 
-const ticketFetched = ticket => {
+const ticketFetched = (ticket) => {
   return {
     type: TICKET_FETCHED,
-    payload: ticket
+    payload: ticket,
   };
 };
 
-export const loadTicket = ticketId => dispatch => {
+export const loadTicket = (ticketId) => (dispatch) => {
   request
     .get(`${baseUrl}/tickets/${ticketId}`)
     .send(ticketId)
-    .then(response => {
+    .then((response) => {
       dispatch(ticketFetched(response.body));
     })
     .catch(console.error);
@@ -71,9 +71,9 @@ export const loadTicket = ticketId => dispatch => {
 
 export const TICKET_UPDATED = "TICKET_UPDATED";
 
-const ticketUpdated = ticket => ({
+const ticketUpdated = (ticket) => ({
   type: TICKET_UPDATED,
-  payload: ticket
+  payload: ticket,
 });
 
 export const updateTicket = (id, data) => (dispatch, getState) => {
@@ -84,10 +84,10 @@ export const updateTicket = (id, data) => (dispatch, getState) => {
     .put(`${baseUrl}/tickets/${id}`)
     .set(`Authorization`, `Bearer ${user.jwt}`)
     .send(data)
-    .then(res => {
+    .then((res) => {
       dispatch(ticketUpdated(res.body));
     })
-    .catch(error => {
+    .catch((error) => {
       if (error.response) {
         const errorMessage = displayError(error.response.body.message);
         return dispatch(errorMessage);

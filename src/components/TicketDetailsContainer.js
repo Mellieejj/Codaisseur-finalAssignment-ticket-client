@@ -53,7 +53,7 @@ function mapStateToProps(state) {
     ticket: state.ticket,
     comments: state.comments,
     tickets: state.tickets,
-    errors: state.errors
+    errors: state.errors,
   };
 }
 
@@ -62,7 +62,7 @@ const mapDispatchToProps = {
   loadEvent,
   getTickets,
   getComments,
-  getUsers
+  getUsers,
 };
 
 export default connect(

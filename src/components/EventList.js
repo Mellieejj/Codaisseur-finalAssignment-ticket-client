@@ -8,12 +8,12 @@ import "./style/EventList.css";
 export default class EventList extends Component {
   state = {
     currentPage: 1,
-    eventsPerPage: 9
+    eventsPerPage: 9,
   };
 
-  changePage = event => {
+  changePage = (event) => {
     this.setState({
-      [event.target.name]: parseInt(event.target.value)
+      [event.target.name]: parseInt(event.target.value),
     });
   };
 
@@ -21,7 +21,7 @@ export default class EventList extends Component {
     if (this.state.currentPage > 1) {
       this.setState({
         ...this.state,
-        currentPage: 1
+        currentPage: 1,
       });
     }
   };
@@ -30,7 +30,7 @@ export default class EventList extends Component {
     if (this.state.currentPage > 1) {
       this.setState({
         ...this.state,
-        currentPage: this.state.currentPage - 1
+        currentPage: this.state.currentPage - 1,
       });
     }
   };
@@ -38,10 +38,9 @@ export default class EventList extends Component {
   lastPage = () => {
     const today = new Date();
     const futureEvents = this.props.events
-      ? this.props.events.filter(event => {
+      ? this.props.events.filter((event) => {
           const startDate = new Date(event.startingDate);
           return startDate >= today;
-          // return moment(event.startingDate).format("ll") >= moment(today).format("ll");
         })
       : null;
 
@@ -51,7 +50,7 @@ export default class EventList extends Component {
     ) {
       this.setState({
         ...this.state,
-        currentPage: Math.ceil(futureEvents.length / this.state.eventsPerPage)
+        currentPage: Math.ceil(futureEvents.length / this.state.eventsPerPage),
       });
     }
   };
@@ -59,10 +58,9 @@ export default class EventList extends Component {
   nextPage = () => {
     const today = new Date();
     const futureEvents = this.props.events
-      ? this.props.events.filter(event => {
+      ? this.props.events.filter((event) => {
           const startDate = new Date(event.startingDate);
           return startDate >= today;
-          // return moment(event.startingDate).format("ll") >= moment(today).format("ll");
         })
       : null;
 
@@ -72,7 +70,7 @@ export default class EventList extends Component {
     ) {
       this.setState({
         ...this.state,
-        currentPage: this.state.currentPage + 1
+        currentPage: this.state.currentPage + 1,
       });
     }
   };
@@ -81,10 +79,9 @@ export default class EventList extends Component {
     // future events
     const today = new Date();
     const futureEvents = this.props.events
-      ? this.props.events.filter(event => {
+      ? this.props.events.filter((event) => {
           const startDate = new Date(event.startingDate);
           return startDate >= today;
-          // return moment(event.startingDate).format("ll") >= moment(today).format("ll");
         })
       : null;
 
@@ -109,7 +106,7 @@ export default class EventList extends Component {
     //style pagination form
     //list mapping
     const list = currentEvents
-      ? currentEvents.map(event => {
+      ? currentEvents.map((event) => {
           return (
             <div className="eventList" key={event.id}>
               <Link to={`/events/${event.id}`}>

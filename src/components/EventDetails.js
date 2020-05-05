@@ -6,17 +6,17 @@ import "./style/EventDetails.css";
 
 export default class EventDetails extends Component {
   state = {
-    add: false
+    add: false,
   };
 
   onClick = () => {
     if (this.state.add) {
       this.setState({
-        add: false
+        add: false,
       });
     } else {
       this.setState({
-        add: true
+        add: true,
       });
     }
   };
@@ -25,9 +25,9 @@ export default class EventDetails extends Component {
     if (this.props.event) {
       if (this.props.event.tickets) {
         const tickets = this.props.tickets.filter(
-          ticket => ticket.eventId === this.props.event.id
+          (ticket) => ticket.eventId === this.props.event.id
         );
-        const eventTickets = tickets.map(ticket => {
+        const eventTickets = tickets.map((ticket) => {
           const image = ticket.pictureUrl ? (
             <img src={ticket.pictureUrl} alt="" />
           ) : null;
@@ -41,7 +41,9 @@ export default class EventDetails extends Component {
 
             //user only 1 ticket + 10% risk
             const userArray = this.props.tickets
-              ? this.props.tickets.filter(tick => tick.userId === ticket.userId)
+              ? this.props.tickets.filter(
+                  (tick) => tick.userId === ticket.userId
+                )
               : null;
             const userRisk = userArray.length === 1 ? 10 : 0;
 

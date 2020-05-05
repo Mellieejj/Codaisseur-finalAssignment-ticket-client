@@ -1,6 +1,8 @@
 import { ERROR_MESSAGE, REMOVE_ERROR } from "../actions/userActions";
 
-export default function(state = "", action) {
+const initialState = "";
+
+export default function (state = initialState, action) {
   switch (action.type) {
     case ERROR_MESSAGE:
       return action.payload;

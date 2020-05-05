@@ -8,23 +8,23 @@ class AddTicketFormContainer extends Component {
     pictureUrl: "",
     price: "",
     description: "",
-    eventId: ""
+    eventId: "",
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-      eventId: this.props.event.id
+      eventId: this.props.event.id,
     });
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     this.props.createTicket(this.state);
     this.setState({
       pictureUrl: "",
       price: "",
-      description: ""
+      description: "",
     });
   };
 
@@ -45,7 +45,7 @@ class AddTicketFormContainer extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    event: state.event
+    event: state.event,
   };
 }
 export default connect(mapStateToProps, { createTicket })(

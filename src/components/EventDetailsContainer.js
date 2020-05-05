@@ -30,7 +30,7 @@ function mapStateToProps(state) {
     user: state.user.jwt,
     event: state.event,
     tickets: state.tickets,
-    ticket: state.ticket
+    ticket: state.ticket,
   };
 }
 

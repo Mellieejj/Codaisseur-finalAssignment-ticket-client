@@ -5,13 +5,13 @@ export default class Comments extends Component {
   render() {
     const ticketComments = this.props.comments
       ? this.props.comments.filter(
-          comment => comment.ticketId === this.props.ticket.id
+          (comment) => comment.ticketId === this.props.ticket.id
         )
       : null;
 
-    const commentList = ticketComments.map(comment => {
+    const commentList = ticketComments.map((comment) => {
       const commentUser = this.props.users
-        ? this.props.users.find(user => {
+        ? this.props.users.find((user) => {
             return comment.userId === user.id;
           })
         : null;

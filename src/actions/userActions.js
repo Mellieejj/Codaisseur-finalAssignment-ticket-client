@@ -5,10 +5,10 @@ const baseUrl = "http://localhost:4000";
 //add error
 export const ERROR_MESSAGE = "ERROR_MESSAGE";
 
-export const displayError = payload => {
+export const displayError = (payload) => {
   return {
     type: ERROR_MESSAGE,
-    payload
+    payload,
   };
 };
 
@@ -17,22 +17,22 @@ export const REMOVE_ERROR = "REMOVE_ERROR";
 
 export const removeError = () => {
   return {
-    type: REMOVE_ERROR
+    type: REMOVE_ERROR,
   };
 };
 
 //login user
 export const JWT = "JWT";
 
-const loginUser = payload => {
+const loginUser = (payload) => {
   return {
     type: JWT,
-    payload
+    payload,
   };
 };
 
 export function login(data) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const response = await request.post(`${baseUrl}/login`).send(data);
       const action = loginUser(response.body);
@@ -47,18 +47,19 @@ export function login(data) {
     }
   };
 }
+
 //sign up
 export const ADD_USER = "ADD_USER";
 
-const signup = payload => {
+const signup = (payload) => {
   return {
     type: "ADD_USER",
-    payload
+    payload,
   };
 };
 
 export function createUser(data) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const response = await request.post(`${baseUrl}/users`).send(data);
       const action = signup(response.body);
@@ -76,12 +77,13 @@ export function createUser(data) {
   };
 }
 
+// find all users
 export const ALL_USERS = "ALL_USERS";
 
 function allUsers(payload) {
   return {
     type: ALL_USERS,
-    payload
+    payload,
   };
 }
 
@@ -91,7 +93,7 @@ export const getUsers = () => (dispatch, getState) => {
 
   if (!users.length) {
     request(`${baseUrl}/users`)
-      .then(response => {
+      .then((response) => {
         const action = allUsers(response.body);
         dispatch(action);
       })

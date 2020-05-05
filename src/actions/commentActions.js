@@ -7,7 +7,7 @@ export const ALL_COMMENTS = "ALL_COMMENTS";
 function allComments(payload) {
   return {
     type: ALL_COMMENTS,
-    payload
+    payload,
   };
 }
 
@@ -17,7 +17,7 @@ export const getComments = () => (dispatch, getState) => {
 
   if (!comments.length) {
     request(`${baseUrl}/comments`)
-      .then(response => {
+      .then((response) => {
         const action = allComments(response.body);
         dispatch(action);
       })
@@ -30,11 +30,11 @@ export const NEW_COMMENT = "NEW_COMMENT";
 function newComment(payload) {
   return {
     type: NEW_COMMENT,
-    payload
+    payload,
   };
 }
 
-export const createComment = data => (dispatch, getState) => {
+export const createComment = (data) => (dispatch, getState) => {
   const state = getState();
   const { user } = state;
 
@@ -42,7 +42,7 @@ export const createComment = data => (dispatch, getState) => {
     .post(`${baseUrl}/comments`)
     .set(`Authorization`, `Bearer ${user.jwt}`)
     .send(data)
-    .then(response => {
+    .then((response) => {
       const action = newComment(response.body);
       dispatch(action);
     })

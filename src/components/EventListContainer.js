@@ -27,7 +27,7 @@ class EventListContainer extends Component {
 function mapStateToProps(state) {
   return {
     events: state.events,
-    user: state.user
+    user: state.user,
   };
 }
 

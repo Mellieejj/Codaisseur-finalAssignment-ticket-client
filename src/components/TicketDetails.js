@@ -6,17 +6,17 @@ import UpdateTicketFormContainer from "./UpdateTicketFormContainer";
 
 export default class TicketDetails extends Component {
   state = {
-    update: false
+    update: false,
   };
 
   onClick = () => {
     if (this.state.update) {
       this.setState({
-        update: false
+        update: false,
       });
     } else {
       this.setState({
-        update: true
+        update: true,
       });
     }
   };
@@ -31,7 +31,7 @@ export default class TicketDetails extends Component {
     //user only 1 ticket + 10% risk
     const userArray = this.props.tickets
       ? this.props.tickets.filter(
-          ticket => ticket.userId === this.props.ticket.userId
+          (ticket) => ticket.userId === this.props.ticket.userId
         )
       : null;
     const userRisk = userArray.length === 1 ? 10 : 0;
@@ -78,7 +78,7 @@ export default class TicketDetails extends Component {
 
   render() {
     const ticketAuthor = this.props.users
-      ? this.props.users.find(user => user.id === this.props.ticket.userId)
+      ? this.props.users.find((user) => user.id === this.props.ticket.userId)
       : null;
 
     return (
@@ -90,7 +90,7 @@ export default class TicketDetails extends Component {
               <Link to={`/events/${this.props.event.id}`}>Back to Event</Link>
             </p>
           </div>
-          {/* ticket details */}
+
           <h3>Ticket for: {this.props.event.name}</h3>
           {this.props.ticket.pictureUrl ? (
             <img src={this.props.ticket.pictureUrl} alt="" />
@@ -121,7 +121,7 @@ export default class TicketDetails extends Component {
             style={{
               color: "#FF3232",
               backgroundColor: "#FFFFFF",
-              fontSize: "large"
+              fontSize: "large",
             }}
           >
             {this.props.errors ? this.props.errors : null}

@@ -16,5 +16,5 @@ export default combineReducers({
   tickets,
   ticket,
   comments,
-  errors
+  errors,
 });
